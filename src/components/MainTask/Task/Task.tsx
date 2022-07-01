@@ -1,52 +1,60 @@
 import React from 'react';
+import modalAddTask from "../../../store/modalAddTask";
 
+import SubTask from "./SubTask";
+import { observer } from "mobx-react";
 
 type PropsType = {
-
+	id?:number
 };
+type ObjectSubtasksType = {
+	id?: number,
+	subtask?: string,
+	ok?: boolean,
+}
 type StateType = {
-
+	id?: number
+	task?: string
+	ok?: boolean
+	subtasks?: Array<ObjectSubtasksType>
 };
 
-export class Task extends React.Component<PropsType, StateType> {
+@observer
+class Task extends React.Component<PropsType, StateType> {
 
+	onChangeCheckbox = (taskId:number) => {
+		modalAddTask.setCheckboxChange( taskId );
+	};
+
+	removeTask = (evt:any) => {
+		evt.preventDefault();
+
+		const taskId:number = Number(evt.target.getAttribute('data-task-id'));
+
+		modalAddTask.removeTask( taskId );
+	};
 
 
 	render(): React.ReactNode {
+		const taskId:number = Number(this.props.id);
+
 		return (
-			<li className="task-list__item task">
+			<li key={taskId} className="task-list__item task">
 
 				<div className="checkbox-wrap">
 					<label className="checkbox-label">
-						<input className="visually-hidden checkbox task-list__performed" type="checkbox" />
-						<h3 className="task__title">Перейти дорогу на красный</h3>
+						<input className="visually-hidden checkbox task-list__performed"
+									 checked={modalAddTask.allTasksArray[taskId].ok}
+									 onClick={ () => this.onChangeCheckbox( taskId ) }
+									 type="checkbox" />
+						<h3 className="task__title">{ modalAddTask.allTasksArray[taskId].task }</h3>
 					</label>
-					<button className="btn btn-del"></button>
+					<button onClick={this.removeTask} data-task-id={taskId} className="btn btn-del"></button>
 				</div>
 
 				<ol className="subtask-list">
 
-					<li className="subtask-list__item">
-						<div className="checkbox-wrap">
-							<label className="checkbox-label">
-								<input className="visually-hidden checkbox subtask-list__performed" type="checkbox" />
-								<span>Встать</span>
-							</label>
-
-							<button className="btn btn-del"></button>
-						</div>
-					</li>
-
-					<li className="subtask-list__item">
-						<div className="checkbox-wrap">
-							<label className="checkbox-label">
-								<input className="visually-hidden checkbox subtask-list__performed" type="checkbox" />
-								<span>Бежать</span>
-							</label>
-
-							<button className="btn btn-del"></button>
-						</div>
-					</li>
+					{ modalAddTask.allTasksArray[taskId].subtasks.map((subtask) => <SubTask taskId={taskId} id={subtask.id} /> ) }
 
 				</ol>
 
@@ -55,3 +63,5 @@ export class Task extends React.Component<PropsType, StateType> {
 	}
 
 }
+
+export default Task;

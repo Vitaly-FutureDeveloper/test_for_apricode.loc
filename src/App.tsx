@@ -3,7 +3,7 @@ import './App.scss';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 import { MainTask } from './components/MainTask/MainTask';
-import { AddTodoModal } from "./components/Modals/AddTodoModal/AddTodoModal";
+import AddTodoModal from "./components/Modals/AddTodoModal/AddTodoModal";
 
 type PropsType = {
 
