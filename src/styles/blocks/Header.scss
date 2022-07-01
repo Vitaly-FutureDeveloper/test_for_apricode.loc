@@ -1,0 +1,39 @@
+.header{
+	background-color: $backgroundHeader;
+}
+.header-container{
+	display: flex;
+	align-items: center;
+
+
+	width: 80%;
+	min-width: $mediaWidthMobile;
+	margin: 0 auto;
+}
+.header-container__logo-link{
+	display: block;
+	width: 70px;
+
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	@include media-tablet {
+		width: 100px;
+	}
+}
+.header-container__title{
+	@include clear-text-styles;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	font-size: 28px;
+
+	@include media-tab{
+		font-size: 32px;
+	}
+
+	@include media-tablet{
+		font-size: 36px;
+	}
+}

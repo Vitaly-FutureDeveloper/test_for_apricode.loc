@@ -1,0 +1,16 @@
+@import "./styles/utils/variables";
+@import "./styles/mixins/media";
+
+@import "./styles/utils/global";
+@import "./styles/mixins/clear-text-styles";
+
+@import "./src/styles/blocks/checkbox";
+@import "./src/styles/blocks/btn";
+@import "./src/styles/blocks/modal";
+
+@import "./src/styles/blocks/Header";
+
+@import "./src/styles/blocks/Tascs";
+@import "./src/styles/blocks/todos-block";
+
+@import "./src/styles/blocks/Footer";

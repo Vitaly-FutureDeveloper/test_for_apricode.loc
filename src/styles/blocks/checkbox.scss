@@ -1,0 +1,48 @@
+.checkbox-wrap{
+	display: flex;
+	align-items: center;
+	//justify-content: space-between;
+}
+
+.checkbox-label > .checkbox + span,
+.checkbox-label > .checkbox + h3{
+	position: relative;
+	padding-left: 30px;
+
+	&::before{
+		content: "";
+		display: inline-block;
+
+		position: absolute;
+		top: 50%;
+		left: 0;
+		transform: translateY(-50%);
+
+		width: 25px;
+		height: 25px;
+		border: 3px solid #666666;
+		border-radius: 4px;
+	}
+}
+
+.checkbox-label > .checkbox:checked + span,
+.checkbox-label > .checkbox:checked + h3{
+	position: relative;
+
+	&::after{
+		content: "";
+		display: inline-block;
+
+		position: absolute;
+		top: 50%;
+		left: 0;
+		transform: translate(3px, -50%);
+
+		width: 19px;
+		height: 19px;
+		background-image: url("./../../assets/img/icon-yes.png");
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+}

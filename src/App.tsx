@@ -1,20 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
+import { MainTask } from './components/MainTask/MainTask';
+import { AddTodoModal } from "./components/Modals/AddTodoModal/AddTodoModal";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-          Learn React
+type PropsType = {
 
-      </header>
-    </div>
-  );
+};
+type StateType = {
+
+};
+
+class App extends React.Component<PropsType, StateType> {
+
+
+
+	render(): React.ReactNode {
+		return (
+			<main className="page-main">
+				<Header />
+				<AddTodoModal />
+				<MainTask />
+				<Footer />
+			</main>
+		);
+	}
+
+
 }
 
 export default App;
